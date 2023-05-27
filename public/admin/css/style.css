@@ -20,7 +20,7 @@
     + Color Functions Mixins
     + Badge Mixins
     + Blockquote Mixins
-    
+
   * Core Styles
     + Reset Styles
     + Fonts
@@ -43,7 +43,7 @@
     + Lists
     + Tables
   * Plugin overrides
-    + Data-tables  
+    + Data-tables
   * Landing screens
     + Auth
   * Layout
@@ -21286,7 +21286,7 @@ code {
   color: theme-color-level(#282f3a, 3);
 }
 
-/* Checkboxes and Radios */
+Checkboxes and Radios
 .form-check {
   position: relative;
   display: block;
