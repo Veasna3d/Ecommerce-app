@@ -5,6 +5,11 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body dashboard-tabs p-0">
+                    {{-- @if (session('message'))
+                        <div class="alert alert-primary" role="alert">
+                            {{ session('message') }}
+                        </div>
+                    @endif --}}
                     <ul class="nav nav-tabs px-4" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="overview-tab" data-bs-toggle="tab" href="#overview" role="tab"
