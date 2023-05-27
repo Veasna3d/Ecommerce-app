@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Livewire\Admin\Brand\Index;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,4 +36,6 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function(){
         Route::get('/category/{category}/edit', 'edit');
         Route::put('/category/{category}/', 'update');
     });
+
+    Route::get('/brands', Index::class);
 });

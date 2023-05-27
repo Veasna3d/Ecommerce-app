@@ -24,8 +24,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <a href="{{ url('admin/category/create') }}" class="btn btn-primary btn-sm text-white">Add New</a>
                     <h4>Category</h4>
+                    <a href="{{ url('admin/category/create') }}" class="btn btn-primary btn-sm text-white">Add New</a>
+
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered table-hover">
