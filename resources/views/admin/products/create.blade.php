@@ -39,6 +39,11 @@
                                     type="button" role="tab" aria-controls="image" aria-selected="false">Product
                                     Images</button>
                             </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="color-tab" data-bs-toggle="tab" data-bs-target="#color"
+                                    type="button" role="tab" aria-controls="color" aria-selected="false">Product
+                                    Colors</button>
+                            </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel"
@@ -46,6 +51,7 @@
                                 <div class="mb-3 mt-3">
                                     <label for="">Choose Category</label>
                                     <select class="form-control" name="category_id" id="">
+                                        <option >Select Category</option>
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                                         @endforeach
@@ -62,6 +68,7 @@
                                 <div class="mb-3">
                                     <label for="">Choose Brand</label>
                                     <select class="form-control" name="brand" id="">
+                                        <option >Select Brand</option>
                                         @foreach ($brands as $brand)
                                             <option value="{{ $brand->name }}">{{ $brand->name }}</option>
                                         @endforeach
@@ -131,6 +138,30 @@
                                 <div class="mb-3 mt-3">
                                     <label for="">Upload Product Images</label>
                                     <input type="file" name="image[]" multiple id="" class="form-control">
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="color" role="tabpanel" aria-labelledby="color-tab">
+                                <div class="mb-3 mt-3">
+                                    <label for="">Select Color</label>
+                                    <div class="row">
+                                        @forelse ($colors as $colorItem)
+                                            <div class="col-md-3 mt-3">
+                                                <div class="p-2 border">
+                                                    <input type="checkbox" name="colors[{{ $colorItem->id }}]"
+                                                        value="{{ $colorItem->id }}"> {{ $colorItem->name }}
+                                                    <br />
+                                                    Quantity: <input type="number"
+                                                        style="width:50px; border-radius: 2px;"
+                                                        name="colorQuantity[{{ $colorItem->id }}]" id="">
+                                                </div>
+                                            </div>
+                                        @empty
+                                            <div class="cor-md-12">
+                                                <span class="text-center">No Color Found</span>
+                                            </div>
+                                        @endforelse
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
