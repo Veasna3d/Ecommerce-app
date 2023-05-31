@@ -16,6 +16,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
+                                <th>Category</th>
                                 <th>Slug</th>
                                 <th>Status</th>
                                 <th>Actions</th>
@@ -26,11 +27,23 @@
                                 <tr>
                                     <td>{{ $brand->id }}</td>
                                     <td>{{ $brand->name }}</td>
+                                    <td>
+                                        @if ($brand->category)
+                                            {{ $brand->category->name }}
+                                        @else
+                                            No Category
+                                        @endif
+
+                                    </td>
                                     <td>{{ $brand->slug }}</td>
                                     <td>{{ $brand->status == '1' ? 'Hidden' : 'Visible' }}</td>
                                     <td>
-                                        <a href="#" wire:click="editBrand({{$brand->id}})" data-bs-toggle="modal" data-bs-target="#updateBrandModal" class="btn btn-sm btn-success">Edit</a>
-                                        <a href="#" wire:click="deleteBrand({{$brand->id}})" data-bs-toggle="modal" data-bs-target="#deleteBrandModal" class="btn btn-sm btn-danger">Delete</a>
+                                        <a href="#" wire:click="editBrand({{ $brand->id }})"
+                                            data-bs-toggle="modal" data-bs-target="#updateBrandModal"
+                                            class="btn btn-sm btn-success">Edit</a>
+                                        <a href="#" wire:click="deleteBrand({{ $brand->id }})"
+                                            data-bs-toggle="modal" data-bs-target="#deleteBrandModal"
+                                            class="btn btn-sm btn-danger">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach

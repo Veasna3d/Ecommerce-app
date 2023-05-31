@@ -44,7 +44,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="7">No Product Available</td>
+                                    <td colspan="7" class="text-center">No Product Available</td>
                                 </tr>
                             @endforelse
                         </tbody>

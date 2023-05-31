@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\HomeController;
 use App\Http\Livewire\Admin\Brand\Index;
 use Illuminate\Support\Facades\Route;
 
@@ -28,8 +29,11 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/',[FrontendController::class, 'index']);
+Route::get('/collections', [FrontendController::class, 'categories']);
+Route::get('/collections/{category_slug}', [FrontendController::class, 'products']);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 
 Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function(){
 
