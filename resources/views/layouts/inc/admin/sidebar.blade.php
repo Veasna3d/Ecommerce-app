@@ -58,9 +58,9 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="pages/tables/basic-table.html">
+                <a class="nav-link" href="{{ url('admin/sliders') }}">
                     <i class="mdi mdi-grid-large menu-icon"></i>
-                    <span class="menu-title">Tables</span>
+                    <span class="menu-title">Carousel</span>
                 </a>
             </li>
             <li class="nav-item">
