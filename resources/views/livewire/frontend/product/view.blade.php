@@ -66,22 +66,22 @@
                         </div>
                         <div class="mt-2">
                             <div class="input-group">
-                                <span class="btn btn1"><i class="fa fa-minus"></i></span>
-                                <input type="text" value="1" class="input-quantity" />
-                                <span class="btn btn1"><i class="fa fa-plus"></i></span>
+                                <span class="btn btn1" wire:click="decrementQty"><i class="fa fa-minus"></i></span>
+                                <input type="text" wire:model="qtyCount" value="{{ $this->qtyCount }}" class="input-quantity" readonly/>
+                                <span class="btn btn1" wire:click="incrementQty"><i class="fa fa-plus"></i></span>
                             </div>
                         </div>
                         <div class="mt-2">
                             <a href="" class="btn btn1"> <i class="fa fa-shopping-cart"></i> Add To Cart</a>
                             <button type="button" wire:click="addToWishList({{ $product->id }})" class="btn btn1">
-                                <span wire:loading.remove>
+                                <span wire:loading.remove wire:target="addToWishList">
                                     <i class="fa fa-heart"></i> Add To Wishlist
                                 </span>
                                 <span wire:loading wire:target="addToWishList">
 
-                                        <div class="spinner-border spinner-border-sm" role="status">
-                                            <span class="visually-hidden">Loading...</span>
-                                        </div>
+                                    <div class="spinner-border spinner-border-sm" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
 
                                 </span>
 

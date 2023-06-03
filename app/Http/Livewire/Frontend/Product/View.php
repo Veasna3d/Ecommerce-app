@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class View extends Component
 {
-    public $category, $product, $prodColorSelectedQuantity;
+    public $category, $product, $prodColorSelectedQuantity, $qtyCount = 1;
 
     public function addToWishList($productId)
     {
@@ -27,6 +27,7 @@ class View extends Component
                     'user_id' => auth()->user()->id,
                     'product_id' => $productId
                 ]);
+                $this->emit('wishlistAddedUpdated');
                 session()->flash('message', 'Wishlist added successfully');
                 $this->dispatchBrowserEvent('message', [
                     'text' => 'Wishlist added successfully',
@@ -52,6 +53,19 @@ class View extends Component
 
         if ($this->prodColorSelectedQuantity == 0) {
             $this->prodColorSelectedQuantity = "outOfStock";
+        }
+    }
+
+    public function incrementQty()
+    {
+        if ($this->qtyCount < 10) {
+            $this->qtyCount++;
+        }
+    }
+    public function decrementQty()
+    {
+        if ($this->qtyCount > 1) {
+            $this->qtyCount--;
         }
     }
 
