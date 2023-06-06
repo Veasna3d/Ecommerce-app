@@ -8,10 +8,6 @@
                 <div class="col-md-12">
                     <div class="shopping-cart">
 
-
-
-                        @forelse ($cart as $cartItem)
-                        @if ($cartItem->product)
                         <div class="cart-header d-none d-sm-none d-mb-block d-lg-block">
                             <div class="row">
                                 <div class="col-md-6">
@@ -31,6 +27,10 @@
                                 </div>
                             </div>
                         </div>
+
+                        @forelse ($cart as $cartItem)
+                        @if ($cartItem->product)
+
                         <div class="cart-item">
                             <div class="row">
                                 <div class="col-md-6 my-auto">
@@ -59,6 +59,7 @@
                                 </div>
                                 <div class="col-md-1 my-auto">
                                     <label class="price">${{ $cartItem->product->selling_price }} </label>
+
                                 </div>
                                 <div class="col-md-2 col-7 my-auto">
                                     <div class="quantity">
@@ -75,6 +76,9 @@
                                 </div>
                                 <div class="col-md-1 my-auto">
                                     <label class="price">${{ $cartItem->product->selling_price * $cartItem->quantity }}
+                                        @php
+                                        $totalPrice += $cartItem->product->selling_price * $cartItem->quantity
+                                        @endphp
                                     </label>
                                 </div>
                                 <div class="col-md-2 col-5 my-auto">
@@ -105,6 +109,20 @@
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col-md-8 my-md-auto mt-3">
+                    <h4>
+                        Get the best deals & Offers <a href="{{ url('/collections') }}">Shop Now</a>
+                    </h4>
+                </div>
+                <div class="col-md-4 mt-3">
+                    <div class="shadow-sm bg-white p-3">
+                        <h4>Total: <span class="float-end">${{ $totalPrice }}</span></h4>
+                        <hr>
+                        <a href="{{ url('/checkout') }}" class="btn btn-warning w-100">Checkout</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
