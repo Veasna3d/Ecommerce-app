@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Frontend\CartController;
@@ -86,6 +87,7 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
         Route::post('product-color/{prod_color_id}', 'updateProdColorQty');
         Route::get('product-color/{prod_color_id}/delete', 'deleteProdColor');
     });
+
     Route::controller(ColorController::class)->group(function () {
         Route::get('/colors', 'index');
         Route::get('colors/create', 'create');
@@ -95,5 +97,16 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
         Route::get('colors/{id}/delete', 'destroy');
     });
 
+    Route::controller(AdminOrderController::class)->group(function () {
+        Route::get('/orders', 'index');
+        Route::get('/orders/{orderId}', 'show');
+        Route::put('/orders/{orderId}', 'updateOrderStatus');
+
+        Route::get('/invoice/{orderId}', 'viewInvoice');
+        Route::get('/invoice/{orderId}/generate', 'generateInvoice');
+    });
+
     Route::get('/brands', Index::class);
 });
+
+

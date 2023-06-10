@@ -169,7 +169,7 @@
             return actions.order.create({
                 purchase_units: [{
                     amount: {
-                        value: '0.1' //"{{ $this->totalProductAmount }}"
+                        value: "{{ $this->totalProductAmount }}"
                     }
                 }]
             });
