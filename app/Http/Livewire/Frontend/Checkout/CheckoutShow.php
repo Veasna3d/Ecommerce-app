@@ -76,7 +76,7 @@ class CheckoutShow extends Component
         ]);
         foreach ($this->carts  as $cartItem) {
             $orderItems = OrderItem::create([
-                'order_id' => $cartItem->product_id,
+                'order_id' => $order->id,
                 'product_id' => $cartItem->product_id,
                 'product_color_id' => $cartItem->product_color_id,
                 'quantity' => $cartItem->quantity,
