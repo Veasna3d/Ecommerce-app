@@ -33,10 +33,14 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', [FrontendController::class, 'index']);
-Route::get('/collections', [FrontendController::class, 'categories']);
-Route::get('/collections/{category_slug}', [FrontendController::class, 'products']);
-Route::get('/collections/{category_slug}/{product_slug}', [FrontendController::class, 'productView']);
+Route::controller(FrontendController::class)->group(function () {
+    Route::get('/', 'index');
+    Route::get('/collections', 'categories');
+    Route::get('/collections/{category_slug}', 'products');
+    Route::get('/collections/{category_slug}/{product_slug}', 'productView');
+    Route::get('/new-arrivals', 'newArrival');
+});
+
 Route::middleware(['auth'])->group(function () {
 
     Route::get('wishlist', [WishlistController::class, 'index']);
@@ -44,7 +48,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('checkout', [CheckoutController::class, 'index']);
     Route::get('orders', [OrderController::class, 'index']);
     Route::get('orders/{orderId}', [OrderController::class, 'show']);
-
 });
 
 Route::get('thank-you', [FrontendController::class, 'thankyou']);
@@ -108,5 +111,3 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
 
     Route::get('/brands', Index::class);
 });
-
-

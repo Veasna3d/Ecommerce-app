@@ -3,18 +3,37 @@
         <div class="container">
 
             {{-- @if (session()->has('message'))
-                <div class="alert alert-success">
-                    {{ session('message') }}
-                </div>
+            <div class="alert alert-success">
+                {{ session('message') }}
+            </div>
             @endif --}}
 
             <div class="row">
                 <div class="col-md-5 mt-3">
-                    <div class="bg-white border">
+                    <div class="bg-white border" wire:ignore>
                         @if ($product->productImages)
-                            <img src="{{ asset($product->productImages[0]->image) }}" class="w-100" alt="Img">
+                        {{-- <img src="{{ asset($product->productImages[0]->image) }}" class="w-100" alt="Img"> --}}
+                        <div class="exzoom" id="exzoom">
+
+                            <div class="exzoom_img_box">
+                                <ul class='exzoom_img_ul'>
+                                    @foreach ($product->productImages as $itemImg)
+                                    <li><img src="{{ asset($itemImg->image) }}" /></li>
+                                    @endforeach
+
+                                </ul>
+                            </div>
+                            <div class="exzoom_nav"></div>
+                            <!-- Nav Buttons -->
+                            <p class="exzoom_btn">
+                                <a href="javascript:void(0);" class="exzoom_prev_btn">
+                                    < </a>
+                                <a href="javascript:void(0);" class="exzoom_next_btn"> > </a>
+                            </p>
+                        </div>
+
                         @else
-                            <span class="text-center">No Image</span>
+                        <span class="text-center">No Image</span>
                         @endif
 
                     </div>
@@ -35,31 +54,30 @@
                         <div>
                             @if ($product->productColors->count() > 0)
 
-                                @if ($product->productColors)
-                                    @foreach ($product->productColors as $colorItem)
-                                        {{-- <input class="form-check-input" type="radio" name="colorSelection"
-                                            value="{{ $colorItem->id }}"> --}}
-                                        <label class="colorSelectionLabel"
-                                            style="background-color:  {{ $colorItem->color->code }}"
-                                            wire:click="colorSelected({{ $colorItem->id }})" for="">
-                                            {{ $colorItem->color->name }}
-                                        </label>
-                                    @endforeach
-                                @endif
+                            @if ($product->productColors)
+                            @foreach ($product->productColors as $colorItem)
+                            {{-- <input class="form-check-input" type="radio" name="colorSelection"
+                                value="{{ $colorItem->id }}"> --}}
+                            <label class="colorSelectionLabel" style="background-color:  {{ $colorItem->color->code }}"
+                                wire:click="colorSelected({{ $colorItem->id }})" for="">
+                                {{ $colorItem->color->name }}
+                            </label>
+                            @endforeach
+                            @endif
 
-                                <div>
-                                    @if ($this->prodColorSelectedQuantity == 'outOfStock')
-                                        <span class="badge bg-danger">Out of Stock</span>
-                                    @elseif ($this->prodColorSelectedQuantity > 0)
-                                        <span class="badge bg-primary">In Stock</span>
-                                    @endif
-                                </div>
-                            @else
-                                @if ($product->quantity)
-                                    <span class="badge bg-primary">In Stock</span>
-                                @else
-                                    <span class="badge bg-danger">Out of Stock</span>
+                            <div>
+                                @if ($this->prodColorSelectedQuantity == 'outOfStock')
+                                <span class="badge bg-danger">Out of Stock</span>
+                                @elseif ($this->prodColorSelectedQuantity > 0)
+                                <span class="badge bg-primary">In Stock</span>
                                 @endif
+                            </div>
+                            @else
+                            @if ($product->quantity)
+                            <span class="badge bg-primary">In Stock</span>
+                            @else
+                            <span class="badge bg-danger">Out of Stock</span>
+                            @endif
 
 
                             @endif
@@ -117,3 +135,26 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+    <script>
+        $(function(){
+
+            $("#exzoom").exzoom({
+
+            // thumbnail nav options
+            "navWidth": 60,
+            "navHeight": 60,
+            "navItemNum": 5,
+            "navItemMargin": 7,
+            "navBorder": 1,
+            // autoplay
+            "autoPlay": false,
+            // autoplay interval in milliseconds
+            "autoPlayTimeout": 2000
+
+            });
+
+            });
+    </script>
+@endpush
