@@ -136,6 +136,13 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="mb-3">
+                                            <label for="">Featured</label><br>
+                                            <input type="checkbox" name="featured"
+                                                {{ $product->featured == '1' ? 'checked' : '' }}>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
                                             <label for="">Status</label><br>
                                             <input type="checkbox" name="status"
                                                 {{ $product->status == '1' ? 'checked' : '' }}>

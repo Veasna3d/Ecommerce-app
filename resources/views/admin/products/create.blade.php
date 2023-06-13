@@ -128,6 +128,12 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="mb-3">
+                                            <label for="">Featured</label><br>
+                                            <input type="checkbox" name="featured">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
                                             <label for="">Status</label><br>
                                             <input type="checkbox" name="status">
                                         </div>

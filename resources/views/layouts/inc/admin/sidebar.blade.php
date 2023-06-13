@@ -94,9 +94,9 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="documentation/documentation.html">
-                    <i class="mdi mdi-file-document-box-outline menu-icon"></i>
-                    <span class="menu-title">Documentation</span>
+                <a class="nav-link" href="{{ url('admin/settings') }}">
+                    <i class="mdi mdi-settings menu-icon"></i>
+                    <span class="menu-title">Setting</span>
                 </a>
             </li>
         </ul>
