@@ -72,7 +72,7 @@
 
             @if($trendingProduct)
                 <div class="col-md-12">
-                    <div class="owl-carousel owl-theme trending-product">
+                    <div class="owl-carousel owl-theme four-carousel">
                         @foreach ($trendingProduct as $productItem)
                             <div class="item">
                                 <div class="product-card">
@@ -112,14 +112,118 @@
     </div>
 </div>
 
+<div class="py-5 bg-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>New Arrivals
+                    <a class="btn btn-sm btn-info text-white float-end" href="{{ url('new-arrivals') }}">View More</a>
+                </h4>
+                <div class="underline mb-4"></div>
+            </div>
+
+            @if($newArrivalsProducts)
+                <div class="col-md-12">
+                    <div class="owl-carousel owl-theme four-carousel">
+                        @foreach ($newArrivalsProducts as $productItem)
+                            <div class="item">
+                                <div class="product-card">
+                                    <div class="product-card-img">
+                                        <label class="stock bg-danger">New</label>
+
+                                        @if ($productItem->productImages->count() > 0)
+                                        <a
+                                            href="{{ url('/collections/' . $productItem->category->slug . '/' . $productItem->slug) }}">
+                                            <img src="{{ asset($productItem->productImages[0]->image) }}"
+                                                alt="{{ $productItem->name }}">
+                                        </a>
+                                        @endif
+                                    </div>
+                                    <div class="product-card-body">
+                                        <p class="product-brand">{{ $productItem->brand }}</p>
+                                        <h5 class="product-name">
+                                            <a
+                                                href="{{ url('/collections/' . $productItem->category->slug . '/' . $productItem->slug) }}">
+                                                {{ $productItem->name }}
+                                            </a>
+                                        </h5>
+                                        <div>
+                                            <span class="selling-price">${{ $productItem->selling_price }}</span>
+                                            <span class="original-price">${{ $productItem->original_price }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            @else
+            <span class="text-center">No Product Available</span>
+            @endif
+        </div>
+    </div>
+</div>
+
+<div class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Featured Products
+                    <a class="btn btn-sm btn-info text-white float-end" href="{{ url('featured-products') }}">View More</a>
+                </h4>
+                <div class="underline mb-4"></div>
+            </div>
+
+            @if($featuredProducts)
+                <div class="col-md-12">
+                    <div class="owl-carousel owl-theme four-carousel">
+                        @foreach ($featuredProducts as $productItem)
+                            <div class="item">
+                                <div class="product-card">
+                                    <div class="product-card-img">
+                                        <label class="stock bg-danger">New</label>
+
+                                        @if ($productItem->productImages->count() > 0)
+                                        <a
+                                            href="{{ url('/collections/' . $productItem->category->slug . '/' . $productItem->slug) }}">
+                                            <img src="{{ asset($productItem->productImages[0]->image) }}"
+                                                alt="{{ $productItem->name }}">
+                                        </a>
+                                        @endif
+                                    </div>
+                                    <div class="product-card-body">
+                                        <p class="product-brand">{{ $productItem->brand }}</p>
+                                        <h5 class="product-name">
+                                            <a
+                                                href="{{ url('/collections/' . $productItem->category->slug . '/' . $productItem->slug) }}">
+                                                {{ $productItem->name }}
+                                            </a>
+                                        </h5>
+                                        <div>
+                                            <span class="selling-price">${{ $productItem->selling_price }}</span>
+                                            <span class="original-price">${{ $productItem->original_price }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            @else
+            <span class="text-center">No Product Available</span>
+            @endif
+        </div>
+    </div>
+</div>
 @endsection
 
 @section('script')
 <script>
-    $('.trending-product').owlCarousel({
+    $('.four-carousel').owlCarousel({
             loop:true,
             margin:10,
-            nav:true,
+            dots:true,
+            nav:false,
             responsive:{
                 0:{
                     items:1

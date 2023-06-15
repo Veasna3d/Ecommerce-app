@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\FrontendController;
@@ -111,6 +112,16 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
 
         Route::get('/invoice/{orderId}', 'viewInvoice');
         Route::get('/invoice/{orderId}/generate', 'generateInvoice');
+    });
+
+
+    Route::controller(UserController::class)->group(function () {
+        Route::get('/users', 'index');
+        Route::get('users/create', 'create');
+        Route::post('/users', 'store');
+        Route::get('/users/{userId}/edit', 'edit');
+        Route::put('/users/{userId}', 'update');
+        Route::get('/users/{userId}/delete', 'delete');
     });
 
     Route::get('/brands', Index::class);
