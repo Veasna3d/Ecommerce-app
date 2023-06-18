@@ -6,11 +6,18 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
+            @if (session('message'))
+                <span class="alert-success p-2">{{ session('message') }}</span>
+            @endif
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h4>Order Details</h4>
                 <div>
-                    <a href="{{ url('admin/invoice/'.$order->id) }}" class="btn btn-sm btn-info">View</a>
-                    <a href="{{ url('admin/invoice/'.$order->id.'/generate') }}" class="btn btn-sm btn-warning">PDF</a>
+                    <a href="{{ url('admin/invoice/'.$order->id.'/mail') }}" class="btn btn-sm btn-info">
+                       Send Invoice Via Mail</a>
+                    <a href="{{ url('admin/invoice/'.$order->id) }}" class="btn btn-sm btn-success">View</a>
+                    <a href="{{ url('admin/invoice/'.$order->id.'/generate') }}" class="btn btn-sm btn-warning">
+                        PDF
+                    </a>
                 </div>
             </div>
             <div class="card-body">

@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\InvoiceOrderMailable;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -22,7 +24,6 @@ class OrderController extends Controller
         }, function ($q) use ($todayDate) {
 
             $q->whereDate('created_at', $todayDate);
-
         })->when($request->status != null, function ($q) use ($request) {
 
             return $q->where('status_message', $request->status);
@@ -52,7 +53,7 @@ class OrderController extends Controller
 
             return redirect()->back();
         } else {
-            return redirect('admin/orders/'.$orderId);
+            return redirect('admin/orders/' . $orderId);
         }
     }
 
@@ -70,6 +71,18 @@ class OrderController extends Controller
         $data = ['order' => $order];
         $pdf = Pdf::loadView('admin.invoice.generate-invoice', $data);
         $todayDate = Carbon::now()->format('d-m-Y');
-        return $pdf->download('invoice-'.$order->id.'-'.$todayDate.'.pdf');
+        return $pdf->download('invoice-' . $order->id . '-' . $todayDate . '.pdf');
+    }
+
+    //send mail
+    public function mailInvoice(int $orderId)
+    {
+        $order = Order::findOrFail($orderId);
+        try {
+            Mail::to("$order->email")->send(new InvoiceOrderMailable($order));
+            return redirect()->back()->with('message', 'Invoice mail has  been sent to ' . $order->email);
+        } catch (\Exception $e) {
+            return redirect()->back()->with('message', 'something went wrong');
+        }
     }
 }

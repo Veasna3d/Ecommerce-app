@@ -7,7 +7,6 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h4>Slider</h4>
                     <a href="{{ url('admin/sliders/create') }}" class="btn btn-primary btn-sm text-white">Add New</a>
-
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered table-hover">
@@ -32,7 +31,7 @@
                                             alt="">
                                     </td>
                                     <td>{{ $slider->status == '1' ? 'Hidden' : 'Visible' }}</td>
-                                    <td>
+                                    <td class="d-flex gap-2">
                                         <a href="{{ url('admin/sliders/' . $slider->id . '/edit') }}"
                                             class="btn btn-sm btn-success">Edit</a>
                                         <a href="{{ url('admin/sliders/' . $slider->id . '/delete') }}"

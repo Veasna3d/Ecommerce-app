@@ -19,13 +19,23 @@ class FrontendController extends Controller
         $trendingProduct = Product::where('trending', '1')->latest()->take(15)->get();
         $newArrivalsProducts = Product::latest()->take(14)->get();
         $featuredProducts = Product::where('featured', '1')->latest()->take(14)->get();
-        return view('frontend.index', compact('sliders', 'trendingProduct', 'newArrivalsProducts','featuredProducts'));
+        return view('frontend.index', compact('sliders', 'trendingProduct', 'newArrivalsProducts', 'featuredProducts'));
+    }
+
+    public function searchProducts(Request $request)
+    {
+        if ($request->search) {
+            $searchProducts = Product::where('name', 'LIKE', '%' . $request->search . '%')->latest()->paginate(10);
+            return view('frontend.pages.search', compact('searchProducts'));
+        } else {
+            return redirect()->back();
+        }
     }
 
     public function newArrival()
     {
-     $newArrivalsProducts = Product::latest()->take(16)->get();
-     return view('frontend.pages.new-arrival', compact('newArrivalsProducts'));
+        $newArrivalsProducts = Product::latest()->take(16)->get();
+        return view('frontend.pages.new-arrival', compact('newArrivalsProducts'));
     }
 
     public function featuredProducts()
@@ -75,10 +85,8 @@ class FrontendController extends Controller
         }
     }
 
-   public function thankyou()
-   {
-    return view('frontend.thank-you');
-   }
-
-
+    public function thankyou()
+    {
+        return view('frontend.thank-you');
+    }
 }

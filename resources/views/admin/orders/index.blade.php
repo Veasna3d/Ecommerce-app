@@ -15,7 +15,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <label for="">Filter by Date</label>
-                            <input type="date" name="date" class="form-control" value="{{ Request::get('date') ?? date('Y-m-d') }}" id="">
+                            <input type="date" name="date" class="form-select" value="{{ Request::get('date') ?? date('Y-m-d') }}" id="">
                         </div>
                         <div class="col-md-3">
                             <label for="">Filter by Status</label>
@@ -58,8 +58,7 @@
                                 <td>{{ $orderItem->created_at->format('d-M-Y') }}</td>
                                 <td>{{ $orderItem->status_message}}</td>
                                 <td>
-                                    <a href="{{ url('admin/orders/'.$orderItem->id) }}" class="btn btn-sm btn-info"><i
-                                            class="fa fa-eye"></i>View</a>
+                                    <a href="{{ url('admin/orders/'.$orderItem->id) }}" class="btn btn-sm btn-info">View</a>
                                 </td>
                             </tr>
                             @empty

@@ -2,9 +2,11 @@
 
 namespace App\Http\Livewire\Frontend\Checkout;
 
+use App\Mail\PlaceOrderMailable;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderItem;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Illuminate\Support\Str;
 
@@ -27,6 +29,13 @@ class CheckoutShow extends Component
         if ($codOrder) {
 
             Cart::where('user_id', auth()->user()->id)->delete();
+            try{
+                $order = Order::findOrFail($codOrder->id);
+                Mail::to("$order->email")->send(new PlaceOrderMailable($order));
+            }catch(\Exception $e){
+                //send error message
+            }
+
             $this->dispatchBrowserEvent('message', [
                 'text' => 'Order Placed Successfully',
                 'type' => 'success',
@@ -100,6 +109,14 @@ class CheckoutShow extends Component
         if ($codOrder) {
 
             Cart::where('user_id', auth()->user()->id)->delete();
+
+            try{
+                $order = Order::findOrFail($codOrder->id);
+                Mail::to("$order->email")->send(new PlaceOrderMailable($order));
+            }catch(\Exception $e){
+                //send error message
+            }
+
             $this->dispatchBrowserEvent('message', [
                 'text' => 'Order Placed Successfully',
                 'type' => 'success',
@@ -130,6 +147,7 @@ class CheckoutShow extends Component
     {
         $this->fullname = auth()->user()->name;
         $this->email = auth()->user()->email;
+
         $this->totalProductAmount =  $this->totalProductAmount();
         return view('livewire.frontend.checkout.checkout-show', [
             'totalProductAmount' => $this->totalProductAmount

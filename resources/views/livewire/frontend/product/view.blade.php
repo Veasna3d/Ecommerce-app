@@ -28,7 +28,7 @@
                             <p class="exzoom_btn">
                                 <a href="javascript:void(0);" class="exzoom_prev_btn">
                                     < </a>
-                                <a href="javascript:void(0);" class="exzoom_next_btn"> > </a>
+                                        <a href="javascript:void(0);" class="exzoom_next_btn"> > </a>
                             </p>
                         </div>
 
@@ -134,11 +134,115 @@
             </div>
         </div>
     </div>
+
+    {{-- Related product --}}
+    <div class="py-3 py-md-5 bt-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <h4>Related
+                        @if ($category)
+                        {{ $category->name }}
+                        @endif
+                        Products</h4>
+                    <div class="underline"></div>
+                </div>
+                <div class="col-md-12">
+                    @if ($category)
+                    <div class="owl-carousel owl-theme four-carousel">
+                        @foreach ($category->relatedProducts as $relatedProductItem)
+                        <div class="item mb-3">
+                            <div class="product-card">
+                                <div class="product-card-img">
+                                    @if ($relatedProductItem->productImages->count() > 0)
+                                    <a
+                                        href="{{ url('/collections/' . $relatedProductItem->category->slug . '/' . $relatedProductItem->slug) }}">
+                                        <img src="{{ asset($relatedProductItem->productImages[0]->image) }}"
+                                            alt="{{ $relatedProductItem->name }}">
+                                    </a>
+                                    @endif
+                                </div>
+                                <div class="product-card-body">
+                                    <p class="product-brand">{{ $relatedProductItem->brand }}</p>
+                                    <h5 class="product-name">
+                                        <a
+                                            href="{{ url('/collections/' . $relatedProductItem->category->slug . '/' . $relatedProductItem->slug) }}">
+                                            {{ $relatedProductItem->name }}
+                                        </a>
+                                    </h5>
+                                    <div>
+                                        <span class="selling-price">${{ $relatedProductItem->selling_price }}</span>
+                                        <span class="original-price">${{ $relatedProductItem->original_price }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                    @else
+                    <div class="p-2">
+                        <span class="text-center">No Product Available</span>
+                    </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- <div class="py-3 py-md-5 bt-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <h4>Related
+                        @if ($product)
+                        {{ $product->brand }}
+                        @endif
+                        Products</h4>
+                    <div class="underline"></div>
+                </div>
+
+                @forelse ($category->relatedProducts as $relatedProductItem)
+                @if ($relatedProductItem == "$product->brand")
+                <div class="col-md-3 mb-3">
+                    <div class="product-card">
+                        <div class="product-card-img">
+                            @if ($relatedProductItem->productImages->count() > 0)
+                            <a
+                                href="{{ url('/collections/' . $relatedProductItem->category->slug . '/' . $relatedProductItem->slug) }}">
+                                <img src="{{ asset($relatedProductItem->productImages[0]->image) }}"
+                                    alt="{{ $relatedProductItem->name }}">
+                            </a>
+                            @endif
+                        </div>
+                        <div class="product-card-body">
+                            <p class="product-brand">{{ $relatedProductItem->brand }}</p>
+                            <h5 class="product-name">
+                                <a
+                                    href="{{ url('/collections/' . $relatedProductItem->category->slug . '/' . $relatedProductItem->slug) }}">
+                                    {{ $relatedProductItem->name }}
+                                </a>
+                            </h5>
+                            <div>
+                                <span class="selling-price">${{ $relatedProductItem->selling_price }}</span>
+                                <span class="original-price">${{ $relatedProductItem->original_price }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endif
+                @empty
+                <div class="col-md-12">
+                    <span class="text-center">No Product Available</span>
+                </div>
+                @endforelse
+            </div>
+        </div>
+    </div> --}}
 </div>
 
 @push('scripts')
-    <script>
-        $(function(){
+<script>
+    $(function(){
 
             $("#exzoom").exzoom({
 
@@ -155,6 +259,23 @@
 
             });
 
-            });
-    </script>
+    });
+            $('.four-carousel').owlCarousel({
+            loop:true,
+            margin:10,
+            dots:true,
+            nav:false,
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:3
+                },
+                1000:{
+                    items:4
+                }
+            }
+        })
+</script>
 @endpush

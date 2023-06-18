@@ -12,6 +12,7 @@ use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\OrderController;
+use App\Http\Controllers\Frontend\UserController as FrontendUserController;
 use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\HomeController;
 use App\Http\Livewire\Admin\Brand\Index;
@@ -42,6 +43,8 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/collections/{category_slug}/{product_slug}', 'productView');
     Route::get('/new-arrivals', 'newArrival');
     Route::get('/featured-products', 'featuredProducts');
+
+    Route::get('/search', 'searchProducts');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -51,6 +54,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('checkout', [CheckoutController::class, 'index']);
     Route::get('orders', [OrderController::class, 'index']);
     Route::get('orders/{orderId}', [OrderController::class, 'show']);
+
+    Route::get('/profile', [FrontendUserController::class, 'index']);
+    Route::post('/profile', [FrontendUserController::class, 'store']);
 });
 
 Route::get('thank-you', [FrontendController::class, 'thankyou']);
@@ -112,6 +118,7 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
 
         Route::get('/invoice/{orderId}', 'viewInvoice');
         Route::get('/invoice/{orderId}/generate', 'generateInvoice');
+        Route::get('/invoice/{orderId}/mail', 'mailInvoice');
     });
 
 
