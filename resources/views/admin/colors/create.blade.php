@@ -14,15 +14,15 @@
                         @csrf
 
                         <div class="mb-3">
-                            <label for="">Name</label>
+                            <label class="form-label" for="">Name</label>
                             <input type="text" name="name" id="" class="form-control">
                         </div>
                         <div class="mb-3">
-                            <label for="">Code</label>
+                            <label class="form-label" for="">Code</label>
                             <input type="text" name="code" id="" class="form-control">
                         </div>
                         <div class="mb-3">
-                            <label for="">Status</label><br>
+                            <label class="form-label" for="">Status</label><br>
                             <input type="checkbox" name="status" id="">
                         </div>
                         <div class="mb-3 text-end">

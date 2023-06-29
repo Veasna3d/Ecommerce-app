@@ -29,7 +29,7 @@
 
                 </div>
                 <div class="card-body">
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -46,10 +46,10 @@
                                     <td>{{ $category->status == '1' ? 'Hidden' : 'Visible' }}</td>
                                     <td>
                                         <a href="{{ url('admin/category/' . $category->id . '/edit') }}"
-                                            class="btn btn-success">Edit</a>
+                                            class="btn btn-success btn-sm">Edit</a>
                                         <a href="#" wire:click="deleteCategory({{ $category->id }})"
                                             data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                            class="btn btn-danger">Delete</a>
+                                            class="btn btn-danger btn-sm">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach

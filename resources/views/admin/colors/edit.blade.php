@@ -13,15 +13,15 @@
                         @method('PUT')
 
                         <div class="mb-3">
-                            <label for="">Name</label>
+                            <label class="form-label" for="">Name</label>
                             <input type="text" value="{{ $color->name }}" name="name" id="" class="form-control">
                         </div>
                         <div class="mb-3">
-                            <label for="">Code</label>
+                            <label class="form-label" for="">Code</label>
                             <input type="text" name="code" value="{{ $color->code }}" id="" class="form-control">
                         </div>
                         <div class="mb-3">
-                            <label for="">Status</label><br>
+                            <label class="form-label" for="">Status</label><br>
                             <input type="checkbox" name="status" id=""{{ $color->status == '1' ? 'checked':'' }}>
                         </div>
                         <div class="mb-3 text-end">

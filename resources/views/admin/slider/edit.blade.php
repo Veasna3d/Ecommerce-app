@@ -13,22 +13,22 @@
                         @method('PUT')
 
                         <div class="mb-3">
-                            <label for="">Title</label>
+                            <label class="form-label" for="">Title</label>
                             <input type="text" name="title" value="{{ $slider->title }}" id=""
                                 class="form-control">
                         </div>
                         <div class="mb-3">
-                            <label for="">Description</label>
+                            <label class="form-label" for="">Description</label>
                             <textarea name="description" class="form-control" rows="4">{{ $slider->description }}</textarea>
                         </div>
                         <div class="mb-3">
-                            <label for="">Image</label>
+                            <label class="form-label" for="">Image</label>
                             <input type="file" name="image" id="" class="form-control">
                             <img src="{{ asset("$slider->image") }}" style="width:70px; height:70px;"
                             alt="">
                         </div>
                         <div class="mb-3">
-                            <label for="">Status</label><br>
+                            <label class="form-label" for="">Status</label><br>
                             <input type="checkbox" name="status" id=""
                                 {{ $slider->status == '1' ? 'checked' : '' }}>
                         </div>

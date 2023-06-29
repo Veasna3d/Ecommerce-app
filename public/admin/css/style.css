@@ -22419,7 +22419,7 @@ dl li {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   padding: 0;
-  width: 257px;
+  width: 245px;
   z-index: 11;
   transition: width 0.25s ease, background 0.25s ease;
   -webkit-transition: width 0.25s ease, background 0.25s ease;
@@ -23036,7 +23036,7 @@ dl li {
     width: calc(100% - 70px);
   }
   .sidebar-icon-only .sidebar {
-    width: 70px;
+    width: 58px;
   }
   .sidebar-icon-only .sidebar .nav {
     overflow: visible;

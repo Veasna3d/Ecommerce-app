@@ -14,21 +14,27 @@
                 <form action="" method="GET">
                     <div class="row">
                         <div class="col-md-3">
-                            <label for="">Filter by Date</label>
-                            <input type="date" name="date" class="form-select" value="{{ Request::get('date') ?? date('Y-m-d') }}" id="">
+                            <label class="form-label" for="">Filter by Date</label>
+                            <input type="date" name="date" class="form-select"
+                                value="{{ Request::get('date') ?? date('Y-m-d') }}" id="">
                         </div>
                         <div class="col-md-3">
-                            <label for="">Filter by Status</label>
+                            <label class="form-label" for="">Filter by Status</label>
                             <select name="status" class="form-select" id="">
                                 <option value="">All</option>
-                                <option value="in progress" {{ Request::get('status') == 'in progress' ? 'selected' : '' }}>In Progress</option>
-                                <option value="completed" {{ Request::get('status') == 'completed' ? 'selected' : '' }}>Completed</option>
-                                <option value="pending" {{ Request::get('status') == 'pending' ? 'selected' : '' }}>Pending</option>
-                                <option value="cancelled" {{ Request::get('status') == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
-                                <option value="out-for-delivery" {{ Request::get('status') == 'out-for-delivery' ? 'selected' : '' }}>Out for delivery</option>
+                                <option value="in progress" {{ Request::get('status')=='in progress' ? 'selected' : ''
+                                    }}>In Progress</option>
+                                <option value="completed" {{ Request::get('status')=='completed' ? 'selected' : '' }}>
+                                    Completed</option>
+                                <option value="pending" {{ Request::get('status')=='pending' ? 'selected' : '' }}>
+                                    Pending</option>
+                                <option value="cancelled" {{ Request::get('status')=='cancelled' ? 'selected' : '' }}>
+                                    Cancelled</option>
+                                <option value="out-for-delivery" {{ Request::get('status')=='out-for-delivery'
+                                    ? 'selected' : '' }}>Out for delivery</option>
                             </select>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 pt-1">
                             <br>
                             <button type="submit" class="btn btn-primary text-white">Filter</button>
                         </div>
@@ -36,7 +42,7 @@
                 </form>
                 <hr>
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th>Order ID</th>
@@ -58,7 +64,8 @@
                                 <td>{{ $orderItem->created_at->format('d-M-Y') }}</td>
                                 <td>{{ $orderItem->status_message}}</td>
                                 <td>
-                                    <a href="{{ url('admin/orders/'.$orderItem->id) }}" class="btn btn-sm btn-info">View</a>
+                                    <a href="{{ url('admin/orders/'.$orderItem->id) }}"
+                                        class="btn btn-sm btn-info">View</a>
                                 </td>
                             </tr>
                             @empty

@@ -49,7 +49,7 @@
                             <div class="tab-pane fade show active" id="home" role="tabpanel"
                                 aria-labelledby="home-tab">
                                 <div class="mb-3 mt-3">
-                                    <label for="">Choose Category</label>
+                                    <label class="form-label" for="">Choose Category</label>
                                     <select class="form-control" name="category_id" id="">
                                         <option >Select Category</option>
                                         @foreach ($categories as $category)
@@ -58,15 +58,15 @@
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="">Product Name</label>
+                                    <label class="form-label" for="">Product Name</label>
                                     <input type="text" name="name" id="" class="form-control">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="">Product Slug</label>
+                                    <label class="form-label" for="">Product Slug</label>
                                     <input type="text" name="slug" id="" class="form-control">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="">Choose Brand</label>
+                                    <label class="form-label" for="">Choose Brand</label>
                                     <select class="form-control" name="brand" id="">
                                         <option >Select Brand</option>
                                         @foreach ($brands as $brand)
@@ -75,26 +75,26 @@
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="">Small Description (500 Words)</label>
+                                    <label class="form-label" for="">Small Description (500 Words)</label>
                                     <textarea name="small_description" class="form-control" rows="4"></textarea>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="">Description</label>
+                                    <label class="form-label" for="">Description</label>
                                     <textarea name="description" class="form-control" rows="4"></textarea>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="seotag" role="tabpanel" aria-labelledby="seotag-tab">
                                 <div class="mb-3 mt-3">
-                                    <label for="">Meta Title</label>
+                                    <label class="form-label" for="">Meta Title</label>
                                     <input type="text" name="meta_title" id="" class="form-control">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="">Meta Description</label>
+                                    <label class="form-label" for="">Meta Description</label>
                                     <textarea name="meta_description" class="form-control" rows="4"></textarea>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="">Meta Keyword</label>
+                                    <label class="form-label" for="">Meta Keyword</label>
                                     <textarea name="meta_keyword" class="form-control" rows="4"></textarea>
                                 </div>
                             </div>
@@ -102,39 +102,39 @@
                                 <div class="row mt-3">
                                     <div class="col-md-4">
                                         <div class="mb-3">
-                                            <label for="">Original Price</label>
+                                            <label class="form-label" for="">Original Price</label>
                                             <input type="text" name="original_price" id=""
                                                 class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="mb-3">
-                                            <label for="">Sellting Price</label>
+                                            <label class="form-label" for="">Sellting Price</label>
                                             <input type="text" name="selling_price" id=""
                                                 class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="mb-3">
-                                            <label for="">Quantity</label>
+                                            <label class="form-label" for="">Quantity</label>
                                             <input type="number" name="quantity" id="" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="mb-3">
-                                            <label for="">Trending</label><br>
+                                            <label class="form-label" for="">Trending</label><br>
                                             <input type="checkbox" name="trending">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="mb-3">
-                                            <label for="">Featured</label><br>
+                                            <label class="form-label" for="">Featured</label><br>
                                             <input type="checkbox" name="featured">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="mb-3">
-                                            <label for="">Status</label><br>
+                                            <label class="form-label" for="">Status</label><br>
                                             <input type="checkbox" name="status">
                                         </div>
                                     </div>
@@ -142,13 +142,13 @@
                             </div>
                             <div class="tab-pane fade" id="image" role="tabpanel" aria-labelledby="image-tab">
                                 <div class="mb-3 mt-3">
-                                    <label for="">Upload Product Images</label>
+                                    <label class="form-label" for="">Upload Product Images</label>
                                     <input type="file" name="image[]" multiple id="" class="form-control">
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="color" role="tabpanel" aria-labelledby="color-tab">
                                 <div class="mb-3 mt-3">
-                                    <label for="">Select Color</label>
+                                    <label class="form-label" for="">Select Color</label>
                                     <div class="row">
                                         @forelse ($colors as $colorItem)
                                             <div class="col-md-3 mt-3">

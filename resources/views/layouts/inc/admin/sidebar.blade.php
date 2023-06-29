@@ -13,26 +13,22 @@
                     <span class="menu-title">Orders</span>
                 </a>
             </li>
-            <li class="nav-item {{ Request::is('admin/category*') ? 'active':'' }}">
-                <a class="nav-link" data-bs-toggle="collapse" href="#category"
-                    aria-expanded="{{ Request::is('admin/category*' ? 'true':'false') }}" aria-controls="category">
 
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('admin/category') }}">
                     <i class="mdi mdi-package-variant menu-icon"></i>
                     <span class="menu-title">Category</span>
-                    <i class="menu-arrow"></i>
                 </a>
-
-                <div class="collapse {{ Request::is('admin/category*' ? 'show':'') }}" id="category">
-                    <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"> <a class="nav-link {{ Request::is('admin/category/create') ? 'active':'' }}" href="{{ url('admin/category/create') }}">Add
-                                Category</a></li>
-                        <li class="nav-item"> <a class="nav-link {{ Request::is('admin/category') || Request::is('admin/category/*/edit') ? 'active':'' }}" href="{{ url('admin/category') }}">View Category</a>
-                        </li>
-                    </ul>
-                </div>
             </li>
 
-            <li class="nav-item {{ Request::is('admin/products*') ? 'active':'' }}">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('admin/products') }}">
+                    <i class="mdi mdi-store menu-icon"></i>
+                    <span class="menu-title">Product</span>
+                </a>
+            </li>
+
+            {{-- <li class="nav-item {{ Request::is('admin/products*') ? 'active':'' }}">
                 <a class="nav-link" data-bs-toggle="collapse" href="#product" aria-expanded="{{ Request::is('admin/products*' ? 'true':'false') }}"
                 aria-controls="product">
                     <i class="mdi mdi-store menu-icon"></i>
@@ -47,7 +43,7 @@
                         </li>
                     </ul>
                 </div>
-            </li>
+            </li> --}}
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('admin/brands') }}">
                     <i class="mdi mdi-bank menu-icon"></i>
@@ -69,17 +65,13 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+                <a class="nav-link {{ (request()->is('admin/users*') && !request()->is('admin/users/')) ? 'active' : '' }}" href="{{ url('admin/users') }}">
                     <i class="mdi mdi-account menu-icon"></i>
                     <span class="menu-title">Security</span>
-                    <i class="menu-arrow"></i>
                 </a>
-                <div class="collapse" id="auth">
-                    <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"> <a class="nav-link" href="{{ url('admin/users') }}"> Users </a></li>
-                    </ul>
-                </div>
             </li>
+
+
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('admin/settings') }}">
                     <i class="mdi mdi-settings menu-icon"></i>

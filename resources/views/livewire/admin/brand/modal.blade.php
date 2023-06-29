@@ -10,7 +10,7 @@
             <form wire:submit.prevent="storeBrand">
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="">Select Category</label>
+                        <label class="form-label" for="">Select Category</label>
                         <select wire:model.defer="category_id" id="" class="form-control">
                             <option value="">Select Category</option>
                             @foreach ($categories as $cateItem)
@@ -23,21 +23,21 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="">Brand Name</label>
+                        <label class="form-label" for="">Brand Name</label>
                         <input type="text" wire:model.defer="name" class="form-control">
                         @error('name')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="">Slug</label>
+                        <label class="form-label" for="">Slug</label>
                         <input type="text" wire:model.defer="slug" class="form-control">
                         @error('slug')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="">Status</label><br>
+                        <label class="form-label" for="">Status</label><br>
                         <input type="checkbox" wire:model.defer="status" />
                         @error('status')
                             <span class="text-danger">{{ $message }}</span>
@@ -73,7 +73,7 @@
                 <form wire:submit.prevent="updateBrand">
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="">Select Category</label>
+                            <label class="form-label" for="">Select Category</label>
                             <select wire:model.defer="category_id" id="" class="form-control">
                                 <option value="">Select Category</option>
                                 @foreach ($categories as $cateItem)
@@ -86,21 +86,21 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="">Brand Name</label>
+                            <label class="form-label" for="">Brand Name</label>
                             <input type="text" wire:model.defer="name" class="form-control">
                             @error('name')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="">Slug</label>
+                            <label class="form-label" for="">Slug</label>
                             <input type="text" wire:model.defer="slug" class="form-control">
                             @error('slug')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="">Status</label><br>
+                            <label class="form-label" for="">Status</label><br>
                             <input type="checkbox" wire:model.defer="status" />
                             @error('status')
                                 <span class="text-danger">{{ $message }}</span>

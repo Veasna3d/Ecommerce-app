@@ -11,7 +11,7 @@
                         class="btn btn-primary btn-sm text-white">Add New</a>
                 </div>
                 <div class="card-body">
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th>ID</th>
